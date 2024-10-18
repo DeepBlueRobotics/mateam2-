@@ -11,20 +11,16 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
-public class ExampleSubsystem extends SubsystemBase {
+public class Drivetrain extends SubsystemBase {
   CANSparkMax rightWheels = MotorControllerFactory.createSparkMax(1, MotorConfig.NEO);
   CANSparkMax leftWheels = MotorControllerFactory.createSparkMax(2, MotorConfig.NEO);
   private XboxController XboxController1 = new XboxController(0);
-  /** Creates a new ExampleSubsystem. */
-  public ExampleSubsystem() {
+  
+  /** Creates a new Drivetrain. */
+  public Drivetrain() {
 
   }
 
-  /**
-   * An example method querying a boolean state of the subsystem (for example, a digital sensor).
-   *
-   * @return value of some boolean subsystem state, such as a digital sensor.
-   */
   public void tankDrive() {
     double rightY = XboxController1.getRightY();
     double leftY = XboxController1.getLeftY();

@@ -11,12 +11,12 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
-public class ExampleSubsystem extends SubsystemBase {
+public class DriveTrain extends SubsystemBase {
   CANSparkMax rightWheels = MotorControllerFactory.createSparkMax(1, MotorConfig.NEO);
   CANSparkMax leftWheels = MotorControllerFactory.createSparkMax(2, MotorConfig.NEO);
   private XboxController XboxController1 = new XboxController(0);
   /** Creates a new ExampleSubsystem. */
-  public ExampleSubsystem() {
+  public DriveTrain() {
 
   }
 

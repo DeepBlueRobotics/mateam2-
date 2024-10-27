@@ -26,8 +26,8 @@ import edu.wpi.first.wpilibj2.command.button.POVButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 public class RobotContainer {
-  public final XboxController controller = new XboxController(OI.port);
-
+  private final XboxController controller = new XboxController(OI.port);
+  private final Drivetrain drivetrain = new Drivetrain();
   public RobotContainer() {
     setBindings();
   }
@@ -37,7 +37,7 @@ public class RobotContainer {
   }
 
   public Command getAutonomousCommand() {
-    return Commands.print("No autonomous command configured");
+    return new Autonomous(drivetrain);
   }
 
 }

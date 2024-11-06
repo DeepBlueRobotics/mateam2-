@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
 public class Drivetrain extends SubsystemBase {
-  CANSparkMax rightWheels = MotorControllerFactory.createSparkMax(1, MotorConfig.NEO);
+  CANSparkMax rightWheels = MotorControllerFactory.createSparkMax(3, MotorConfig.NEO);
   CANSparkMax leftWheels = MotorControllerFactory.createSparkMax(2, MotorConfig.NEO);
   private XboxController XboxController1 = new XboxController(0);
   

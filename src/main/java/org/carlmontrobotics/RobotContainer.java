@@ -9,8 +9,13 @@ package org.carlmontrobotics;
 // import org.carlmontrobotics.commands.*;
 import static org.carlmontrobotics.Constants.OI;
 
+import org.carlmontrobotics.Constants.OI;
+import org.carlmontrobotics.subsystems.Door;
+
 //controllers
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.StadiaController.Button;
 import edu.wpi.first.wpilibj.XboxController.Axis;
 
 //commands
@@ -29,8 +34,12 @@ public class RobotContainer {
 
   //1. using GenericHID allows us to use different kinds of controllers
   //2. Use absolute paths from constants to reduce confusion
-  public final GenericHID driverController = new GenericHID(OI.Driver.port);
-  public final GenericHID manipulatorController = new GenericHID(OI.Manipulator.port);
+  public final XboxController driverController = new XboxController(OI.Driver.port);
+  public final XboxController manipulatorController = new XboxController(OI.Manipulator.port);
+
+  public Door doorSubsystem = new Door(driverController);
+  
+  
 
   public RobotContainer() {
 

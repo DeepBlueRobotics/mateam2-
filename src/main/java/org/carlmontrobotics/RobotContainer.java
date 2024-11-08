@@ -28,6 +28,7 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 public class RobotContainer {
   private final XboxController controller = new XboxController(OI.port);
   private final Drivetrain drivetrain = new Drivetrain();
+  private final Door door = new Door();
   public RobotContainer() {
     setBindings();
   }

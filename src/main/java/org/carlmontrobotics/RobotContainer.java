@@ -36,7 +36,12 @@ public class RobotContainer {
   }
 
   private void setBindings() {
-
+    //6 is the Right bumper
+  new JoystickButton(controller, doorConstants.rightBumper)
+    .whileTrue(new InstantCommand(door::openDoorButton));
+    
+    new JoystickButton(controller, doorConstants.leftBumper)
+    .whileTrue(new InstantCommand(door::closeDoorButton));
   }
 
   public Command getAutonomousCommand() {

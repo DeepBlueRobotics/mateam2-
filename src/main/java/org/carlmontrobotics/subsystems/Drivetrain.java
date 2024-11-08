@@ -14,8 +14,8 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
 public class Drivetrain extends SubsystemBase {
-  CANSparkMax rightWheels = MotorControllerFactory.createSparkMax(17, MotorConfig.NEO);
-  CANSparkMax leftWheels = MotorControllerFactory.createSparkMax(14, MotorConfig.NEO);
+  CANSparkMax rightWheels = MotorControllerFactory.createSparkMax(driveTrainConstants.right_motor_port, MotorConfig.NEO);
+  CANSparkMax leftWheels = MotorControllerFactory.createSparkMax(driveTrainConstants.left_motor_port, MotorConfig.NEO);
   RelativeEncoder rightEncoder = rightWheels.getEncoder();
   RelativeEncoder leftEncoder = leftWheels.getEncoder();
   private static XboxController XboxController1 = new XboxController(0);
@@ -28,8 +28,8 @@ public class Drivetrain extends SubsystemBase {
   public void tankDrive() {
     double rightY = XboxController1.getRightY();
     double leftY = XboxController1.getLeftY();
-    rightWheels.set(-rightY*0.25);
-    leftWheels.set(leftY*0.25);
+    rightWheels.set(-rightY);
+    leftWheels.set(leftY);
     SmartDashboard.putNumber("motor right", rightEncoder.getPosition());
   }
 

@@ -5,6 +5,9 @@ import org.carlmontrobotics.lib199.MotorControllerFactory;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
+import org.carlmontrobotics.Constants.DoorConstants;
+import org.carlmontrobotics.Constants.driveTrainConstants;
+
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
@@ -14,8 +17,8 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
 public class Drivetrain extends SubsystemBase {
-  CANSparkMax rightWheels = MotorControllerFactory.createSparkMax(driveTrainConstants.right_motor_port, MotorConfig.NEO);
-  CANSparkMax leftWheels = MotorControllerFactory.createSparkMax(driveTrainConstants.left_motor_port, MotorConfig.NEO);
+  CANSparkMax rightWheels = MotorControllerFactory.createSparkMax(driveTrainConstants.rightWheelsPort, MotorConfig.NEO);
+  CANSparkMax leftWheels = MotorControllerFactory.createSparkMax(driveTrainConstants.leftWheelsPort, MotorConfig.NEO);
   RelativeEncoder rightEncoder = rightWheels.getEncoder();
   RelativeEncoder leftEncoder = leftWheels.getEncoder();
   private static XboxController XboxController1 = new XboxController(0);

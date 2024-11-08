@@ -1,5 +1,7 @@
 package org.carlmontrobotics;
 
+import edu.wpi.first.wpilibj.XboxController.Button;
+
 public final class Constants {
     // public static final class Drivetrain {
     //     public static final double MAX_SPEED_MPS = 2;
@@ -14,13 +16,17 @@ public final class Constants {
         public static final int right_motor_port = 0; 
     }
     public static final class DoorConstants {
-        public static final int rightBumper = 6;
-        public static final int leftBumper = 5;
-        public static final int doorSpeed = 0.25;
-        public static final int doorPort = 1;
+       // public static final int rightBumper = 6;
+        public static final int rightBumper = Button.kRightBumper.value;
+
+        //public static final int leftBumper = 5;
+        public static final int leftBumper = Button.kLeftBumper.value;
+
+        public static final double doorSpeed = 0.06;
+        public static final int doorPort = 9;
     }
     public static final class driveTrainConstants {
-        public static final class rightWeelsPort = 3;
-        public static final class leftWeelsPort = 2;
+        public static final int rightWheelsPort = 3;
+        public static final int leftWheelsPort = 2;
     }
 }

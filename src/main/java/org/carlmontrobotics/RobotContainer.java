@@ -10,6 +10,7 @@ import org.carlmontrobotics.subsystems.*;
 import static org.carlmontrobotics.Constants.*;
 
 import org.carlmontrobotics.Constants.OI;
+import org.carlmontrobotics.Constants.driveTrainConstants;
 
 //controllers
 import edu.wpi.first.wpilibj.GenericHID;
@@ -21,7 +22,6 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-
 //control bindings
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
@@ -37,11 +37,14 @@ public class RobotContainer {
 
   private void setBindings() {
     //6 is the Right bumper
-  new JoystickButton(controller, doorConstants.rightBumper)
-    .whileTrue(new InstantCommand(door::openDoorButton));
+  new JoystickButton(controller, Constants.DoorConstants.rightBumper)
+    .whileTrue(new InstantCommand(door::doorOpenButton))
+    .whileFalse(new InstantCommand(door::doorStopButton));
+
     
-    new JoystickButton(controller, doorConstants.leftBumper)
-    .whileTrue(new InstantCommand(door::closeDoorButton));
+  new JoystickButton(controller, Constants.DoorConstants.leftBumper)
+    .whileTrue(new InstantCommand(door::doorCloseButton))
+    .whileFalse(new InstantCommand(door::doorStopButton));
   }
 
   public Command getAutonomousCommand() {

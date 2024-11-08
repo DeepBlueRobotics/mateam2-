@@ -5,6 +5,7 @@ import org.carlmontrobotics.lib199.MotorControllerFactory;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
+import org.carlmontrobotics.Constants.DoorConstants;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
@@ -33,14 +34,17 @@ public class Door extends SubsystemBase {
   }
   public void doorCloseButton(){
     doorMotor.set(-DoorConstants.doorSpeed);
-}
+  }
+  public void doorStopButton(){
+    doorMotor.set(0);
+  }
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
     SmartDashboard.putNumber("Position", encoder.getPosition());
     //doorOpen();
-    doorOpenButton();
-    doorCloseButton();
+    //doorOpenButton();
+    //doorCloseButton();
   }
 }
   

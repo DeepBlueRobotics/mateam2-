@@ -24,6 +24,9 @@ public class Door extends SubsystemBase {
     double leftY2 = xboxController2.getLeftY();
     doorMotor.set(leftY2 * 0.25);
   }
+  public void doorOpenButton() {
+    
+  }
 
   @Override
   public void periodic() {

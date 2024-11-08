@@ -9,6 +9,8 @@ import org.carlmontrobotics.commands.*;
 import org.carlmontrobotics.subsystems.*;
 import static org.carlmontrobotics.Constants.*;
 
+import org.carlmontrobotics.Constants.OI;
+
 //controllers
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
@@ -26,7 +28,7 @@ import edu.wpi.first.wpilibj2.command.button.POVButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 public class RobotContainer {
-  private final XboxController controller = new XboxController(OI.port);
+  private final XboxController controller = new XboxController(OI.XBOX_CONTROLLER_PORT);
   private final Drivetrain drivetrain = new Drivetrain();
   private final Door door = new Door();
   public RobotContainer() {

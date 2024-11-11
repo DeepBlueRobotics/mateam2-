@@ -8,7 +8,7 @@ public final class Constants {
     // }
     public static final class OI {
         //ublic static final int port = 0;
-        public static final int XBOX_CONTROLLER_PORT = 1;
+        public static final int XBOX_CONTROLLER_PORT = 2;
     }
 
     /*public static final class drivetrainC { 
@@ -27,6 +27,6 @@ public final class Constants {
     }
     public static final class driveTrainConstants {
         public static final int rightWheelsPort = 1;
-        public static final int leftWheelsPort = 9;
+        public static final int leftWheelsPort = 12;
     }
 }

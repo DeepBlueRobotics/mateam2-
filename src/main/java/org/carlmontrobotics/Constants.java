@@ -11,10 +11,10 @@ public final class Constants {
         public static final int XBOX_CONTROLLER_PORT = 1;
     }
 
-    public static final class drivetrainC { 
-        public static final int left_motor_port = 2;
-        public static final int right_motor_port = 0; 
-    }
+    /*public static final class drivetrainC { 
+        public static final int left_motor_port = 1;
+        public static final int right_motor_port = 9; 
+    }*/
     public static final class DoorConstants {
        // public static final int rightBumper = 6;
         public static final int rightBumper = Button.kRightBumper.value;
@@ -26,7 +26,7 @@ public final class Constants {
         public static final int doorPort = 9;
     }
     public static final class driveTrainConstants {
-        public static final int rightWheelsPort = 3;
-        public static final int leftWheelsPort = 2;
+        public static final int rightWheelsPort = 1;
+        public static final int leftWheelsPort = 9;
     }
 }

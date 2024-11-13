@@ -34,6 +34,14 @@ public class Drivetrain extends SubsystemBase {
     SmartDashboard.putNumber("motor right", rightEncoder.getPosition());
   }
 
+  public void arcadeDrive(){
+    double rightX = controller.getRightX();
+    double leftY = controller.getLeftY();
+    rightWheels.set((leftY - rightX) * DrivetrainC.right_motor_slowdown);
+    leftWheels.set((leftY + rightX) * DrivetrainC.left_motor_slowdown);
+    SmartDashboard.putNumber("motor right", rightEncoder.getPosition());
+  }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run

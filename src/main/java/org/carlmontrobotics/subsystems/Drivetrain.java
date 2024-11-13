@@ -21,7 +21,7 @@ public class Drivetrain extends SubsystemBase {
   CANSparkMax leftWheels = MotorControllerFactory.createSparkMax(driveTrainConstants.leftWheelsPort, MotorConfig.NEO);
   RelativeEncoder rightEncoder = rightWheels.getEncoder();
   RelativeEncoder leftEncoder = leftWheels.getEncoder();
-  //private static XboxController XboxController1 = new XboxController(0);
+  XboxController controller;
   
   /** Creates a new Drivetrain. */
   public Drivetrain() {
@@ -29,8 +29,8 @@ public class Drivetrain extends SubsystemBase {
   }
 
   public void tankDrive() {
-    double rightY = RobotContainer.controller.getRightY();
-    double leftY = RobotContainer.controller.getLeftY();
+    double rightY = controller.getRightY();
+    double leftY = controller.getLeftY();
     rightWheels.set(-rightY);
     leftWheels.set(leftY);
     //SmartDashboard.putNumber("motor right", rightEncoder.getPosition());

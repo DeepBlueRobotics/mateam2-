@@ -19,7 +19,6 @@ import edu.wpi.first.wpilibj.XboxController;
 public class Door extends SubsystemBase {
     CANSparkMax doorMotor = MotorControllerFactory.createSparkMax(DoorConstants.doorPort, MotorConfig.NEO);
     RelativeEncoder encoder = doorMotor.getEncoder();
-    private XboxController xboxController2 = new XboxController(2); 
   /** Creates a new Drivetrain. */
   /*public void doorOpen() {
    double leftY2 = xboxController2.getLeftY();

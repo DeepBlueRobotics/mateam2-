@@ -5,34 +5,32 @@ import org.carlmontrobotics.lib199.MotorControllerFactory;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
-import org.carlmontrobotics.Constants.DoorConstants;
-import org.carlmontrobotics.Constants.driveTrainConstants;
+import org.carlmontrobotics.Constants.*;
 
 
-import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
 public class Drivetrain extends SubsystemBase {
-  CANSparkMax rightWheels = MotorControllerFactory.createSparkMax(driveTrainConstants.rightWheelsPort, MotorConfig.NEO);
-  CANSparkMax leftWheels = MotorControllerFactory.createSparkMax(driveTrainConstants.leftWheelsPort, MotorConfig.NEO);
+  CANSparkMax rightWheels = MotorControllerFactory.createSparkMax(DrivetrainC.rightWheelsPort, MotorConfig.NEO);
+  CANSparkMax leftWheels = MotorControllerFactory.createSparkMax(DrivetrainC.leftWheelsPort, MotorConfig.NEO);
   RelativeEncoder rightEncoder = rightWheels.getEncoder();
   RelativeEncoder leftEncoder = leftWheels.getEncoder();
-  private static XboxController XboxController1 = new XboxController(0);
+  private XboxController controller;
   
   /** Creates a new Drivetrain. */
-  public Drivetrain() {
+  public Drivetrain(XboxController controller) {
     SmartDashboard.putNumber("test Drive", 0);
+    this.controller = controller;
   }
 
   public void tankDrive() {
-    double rightY = XboxController1.getRightY();
-    double leftY = XboxController1.getLeftY();
-    rightWheels.set(-rightY);
-    leftWheels.set(leftY);
+    double rightY = controller.getRightY();
+    double leftY = controller.getLeftY();
+    rightWheels.set(-rightY * DrivetrainC.right_motor_slowdown);
+    leftWheels.set(leftY * DrivetrainC.left_motor_slowdown);
     SmartDashboard.putNumber("motor right", rightEncoder.getPosition());
   }
 

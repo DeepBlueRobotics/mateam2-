@@ -2,10 +2,10 @@
 package org.carlmontrobotics.subsystems;
 import org.carlmontrobotics.lib199.MotorConfig;
 import org.carlmontrobotics.lib199.MotorControllerFactory;
+import org.carlmontrobotics.Constants.*;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
-import org.carlmontrobotics.Constants.DoorConstants;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.XboxController;
 public class Door extends SubsystemBase {
     CANSparkMax doorMotor = MotorControllerFactory.createSparkMax(DoorConstants.doorPort, MotorConfig.NEO);
     RelativeEncoder encoder = doorMotor.getEncoder();
+    private XboxController xboxController2 = new XboxController(2); 
   /** Creates a new Drivetrain. */
   /*public void doorOpen() {
    double leftY2 = xboxController2.getLeftY();

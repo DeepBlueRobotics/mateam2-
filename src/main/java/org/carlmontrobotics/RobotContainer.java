@@ -36,12 +36,13 @@ public class RobotContainer {
     .whileTrue(new InstantCommand(door::doorOpenButton))
     .whileFalse(new InstantCommand(door::doorStopButton));
 
-    
   new JoystickButton(controller, Constants.DoorConstants.leftBumper)
     .whileTrue(new InstantCommand(door::doorCloseButton))
     .whileFalse(new InstantCommand(door::doorStopButton));
-  }
 
+  new JoystickButton(controller, Constants.DrivetrainC.AButton)
+    .whileTrue(new InstantCommand(drivetrain::switchModes));
+  }
   public Command getAutonomousCommand() {
     return new Autonomous(drivetrain);
   }

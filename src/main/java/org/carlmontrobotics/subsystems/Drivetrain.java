@@ -19,6 +19,8 @@ public class Drivetrain extends SubsystemBase {
   RelativeEncoder rightEncoder = rightWheels.getEncoder();
   RelativeEncoder leftEncoder = leftWheels.getEncoder();
   private XboxController controller;
+  public static boolean arcadeDrive = true;
+
   
   /** Creates a new Drivetrain. */
   public Drivetrain(XboxController controller) {
@@ -41,12 +43,18 @@ public class Drivetrain extends SubsystemBase {
     leftWheels.set((leftY + rightX) * DrivetrainC.left_motor_slowdown);
     SmartDashboard.putNumber("motor right", rightEncoder.getPosition());
   }
-
+  public void switchModes(){
+    arcadeDrive = !arcadeDrive;
+  }
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    
-    tankDrive();
+    if (arcadeDrive){
+      arcadeDrive();
+    } else{
+      tankDrive();
+
+    }
     //leftWheels.set(SmartDashboard.getNumber("test Drive", 0));
 
     

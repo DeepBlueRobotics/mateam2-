@@ -18,6 +18,7 @@ public final class Constants {
         public static final int rightWheelsPort = 17;
         public static final int leftWheelsPort = 14;
 
+        public static final int AButton = Button.kA.value;
     }
     public static final class DoorConstants {
        // public static final int rightBumper = 6;

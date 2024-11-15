@@ -9,6 +9,7 @@ import org.carlmontrobotics.subsystems.Drivetrain;
 import com.revrobotics.CANSparkMax;
 
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 public class Autonomous extends Command {
     //make drivetrain
@@ -19,8 +20,7 @@ public class Autonomous extends Command {
     /** Creates a new AimOuttakeSpeaker. */
     public Autonomous(Drivetrain drivetrain) {
         // Use addRequirements() here to declare subsystem dependencies.
-        addRequirements(drivetrain);
-
+        addRequirements(this.drivetrain = drivetrain);
     }
 
     // Called when the command is initially scheduled.
@@ -28,27 +28,26 @@ public class Autonomous extends Command {
     public void initialize() {
         timer.reset();
         timer.start();
-        rightWheels.set(1);
-        leftWheels.set(1);
-
     }
 
     // Called every time the scheduler runs while the command is scheduled.
     @Override
-    public void execute() {}
+    public void execute() {
+        drivetrain.tankDrive(-1, -1);
+
+    }
 
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
-        rightWheels.set(0);
-        leftWheels.set(0);
+        drivetrain.tankDrive(0, 0);
         timer.stop();
     }
 
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        return timer.get() > 15;
+        return timer.get() > 3;
         //run for 15 more seconds and then stop
         //timer gets stopped
     }

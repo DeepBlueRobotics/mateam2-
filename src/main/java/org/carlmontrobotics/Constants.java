@@ -12,8 +12,8 @@ public final class Constants {
     }
 
     public static final class DrivetrainC { 
-        public static final double left_motor_slowdown = 0.3;
-        public static final double right_motor_slowdown = 0.3;
+        public static final double left_motor_slowdown = 0.5;
+        public static final double right_motor_slowdown = 0.5;
 
         public static final int rightWheelsPort = 17;
         public static final int leftWheelsPort = 14;

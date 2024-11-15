@@ -28,18 +28,18 @@ public class Drivetrain extends SubsystemBase {
     this.controller = controller;
   }
 
-  public void tankDrive() {
-    double rightY = controller.getRightY();
-    double leftY = controller.getLeftY();
+  public void tankDrive(double leftY, double rightY) {
+    // double rightY = controller.getRightY();
+    // double leftY = controller.getLeftY();
     rightWheels.set(-rightY * DrivetrainC.right_motor_slowdown);
     leftWheels.set(leftY * DrivetrainC.left_motor_slowdown);
     SmartDashboard.putNumber("motor right", rightEncoder.getPosition());
   }
 
-  public void arcadeDrive(){
-    double rightX = controller.getRightX();
-    double leftY = controller.getLeftY();
-    rightWheels.set((-(leftY + rightX) * DrivetrainC.right_motor_slowdown));
+  public void arcadeDrive(double rightX, double leftY){
+    // double rightX = controller.getRightX();
+    // double leftY = controller.getLeftY();
+    rightWheels.set(-((leftY + rightX) * DrivetrainC.right_motor_slowdown));
     leftWheels.set((leftY - rightX) * DrivetrainC.left_motor_slowdown);
     SmartDashboard.putNumber("motor right", rightEncoder.getPosition());
   }
@@ -50,9 +50,10 @@ public class Drivetrain extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
     if (arcadeDrive){
-      arcadeDrive();
-    } else{
-      tankDrive();
+      arcadeDrive(controller.getRightX(), controller.getLeftY());
+    } 
+    else{
+      tankDrive(controller.getLeftY(), controller.getRightY());
 
     }
     //leftWheels.set(SmartDashboard.getNumber("test Drive", 0));

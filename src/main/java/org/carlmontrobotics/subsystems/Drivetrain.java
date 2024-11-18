@@ -46,7 +46,7 @@ public class Drivetrain extends SubsystemBase {
   }
   @Override
   public void periodic() {
-    if (arcadeDrive && Autonomous.isAuto()){
+    if (arcadeDrive && !Autonomous.isAuto()){
       arcadeDrive(controller.getRightX(), controller.getLeftY());
     } 
     else if (!arcadeDrive && !Autonomous.isAuto()){

@@ -34,7 +34,7 @@ public class Autonomous extends Command {
         timer.reset();
         timer.start();
         auto = true;
-        drivetrain.tankDrive(-1, -1);
+        drivetrain.tankDrive(-0.5, -0.5);
     }
 
     // Called every time the scheduler runs while the command is scheduled.
@@ -54,7 +54,7 @@ public class Autonomous extends Command {
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        return timer.get() > 3;
+        return timer.get() > 2;
         //run for 15 more seconds and then stop
         //timer gets stopped
     }

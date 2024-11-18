@@ -39,9 +39,7 @@ public class Autonomous extends Command {
 
     // Called every time the scheduler runs while the command is scheduled.
     @Override
-    public void execute() {
-        //bugs out because tank drive stops and then restarts, but it doesn't work in the init func? investigate
-    }
+    public void execute() {}
 
     // Called once the command ends or is interrupted.
     @Override
@@ -55,7 +53,5 @@ public class Autonomous extends Command {
     @Override
     public boolean isFinished() {
         return timer.get() > 2;
-        //run for 15 more seconds and then stop
-        //timer gets stopped
     }
 }

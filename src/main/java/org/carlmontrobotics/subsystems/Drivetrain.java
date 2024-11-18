@@ -6,7 +6,7 @@ import org.carlmontrobotics.lib199.MotorControllerFactory;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import org.carlmontrobotics.Constants.*;
-
+import org.carlmontrobotics.commands.Autonomous;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -20,6 +20,7 @@ public class Drivetrain extends SubsystemBase {
   RelativeEncoder leftEncoder = leftWheels.getEncoder();
   private XboxController controller;
   public static boolean arcadeDrive = true;
+  public static boolean inAutonomous = true;
 
   
   /** Creates a new Drivetrain. */
@@ -33,7 +34,6 @@ public class Drivetrain extends SubsystemBase {
     // double leftY = controller.getLeftY();
     rightWheels.set(-rightY * DrivetrainC.right_motor_slowdown);
     leftWheels.set(leftY * DrivetrainC.left_motor_slowdown);
-    SmartDashboard.putNumber("motor right", rightEncoder.getPosition());
   }
 
   public void arcadeDrive(double rightX, double leftY){
@@ -41,24 +41,22 @@ public class Drivetrain extends SubsystemBase {
     // double leftY = controller.getLeftY();
     rightWheels.set(-((leftY + rightX) * DrivetrainC.right_motor_slowdown));
     leftWheels.set((leftY - rightX) * DrivetrainC.left_motor_slowdown);
-    SmartDashboard.putNumber("motor right", rightEncoder.getPosition());
   }
   public void switchModes(){
     arcadeDrive = !arcadeDrive;
   }
   @Override
   public void periodic() {
-    // This method will be called once per scheduler run
-    if (arcadeDrive){
+    inAutonomous = Autonomous.isAuto();
+    if (arcadeDrive && !inAutonomous){
       arcadeDrive(controller.getRightX(), controller.getLeftY());
     } 
-    else{
+    else if (!arcadeDrive && !inAutonomous){
       tankDrive(controller.getLeftY(), controller.getRightY());
-
     }
-    //leftWheels.set(SmartDashboard.getNumber("test Drive", 0));
-
-    
+    else {
+      return; 
+    }
   }
 }
   

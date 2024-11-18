@@ -33,7 +33,12 @@
       "/FMSInfo": "FMSInfo"
     }
   },
-  "NetworkTables Info": {
-    "visible": true
+  "NetworkTables": {
+    "Persistent Values": {
+      "open": false
+    }
+  },
+  "NetworkTables View": {
+    "visible": false
   }
 }

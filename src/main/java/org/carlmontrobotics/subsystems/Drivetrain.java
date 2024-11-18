@@ -20,7 +20,6 @@ public class Drivetrain extends SubsystemBase {
   RelativeEncoder leftEncoder = leftWheels.getEncoder();
   private XboxController controller;
   public static boolean arcadeDrive = true;
-  public static boolean inAutonomous = true;
 
   
   /** Creates a new Drivetrain. */
@@ -47,11 +46,10 @@ public class Drivetrain extends SubsystemBase {
   }
   @Override
   public void periodic() {
-    inAutonomous = Autonomous.isAuto();
-    if (arcadeDrive && !inAutonomous){
+    if (arcadeDrive && Autonomous.isAuto()){
       arcadeDrive(controller.getRightX(), controller.getLeftY());
     } 
-    else if (!arcadeDrive && !inAutonomous){
+    else if (!arcadeDrive && !Autonomous.isAuto()){
       tankDrive(controller.getLeftY(), controller.getRightY());
     }
     else {
@@ -59,4 +57,3 @@ public class Drivetrain extends SubsystemBase {
     }
   }
 }
-  

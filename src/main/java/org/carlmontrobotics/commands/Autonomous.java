@@ -34,12 +34,12 @@ public class Autonomous extends Command {
         timer.reset();
         timer.start();
         auto = true;
+        drivetrain.tankDrive(-1, -1);
     }
 
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        drivetrain.tankDrive(-1, -1);
         //bugs out because tank drive stops and then restarts, but it doesn't work in the init func? investigate
     }
 

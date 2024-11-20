@@ -17,6 +17,7 @@ public class Autonomous extends Command {
     CANSparkMax leftWheels;
     Timer timer = new Timer();
     Drivetrain drivetrain;
+    private static boolean autonomousOn;
     /** Creates a new AimOuttakeSpeaker. */
     public Autonomous(Drivetrain drivetrain) {
         // Use addRequirements() here to declare subsystem dependencies.
@@ -28,13 +29,17 @@ public class Autonomous extends Command {
     public void initialize() {
         timer.reset();
         timer.start();
+        drivetrain.tankDrive(-1, -1);
+        autonomousOn = true;
     }
 
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        drivetrain.tankDrive(-1, -1);
 
+    }
+    public static boolean getAutonomous() {
+        return autonomousOn;
     }
 
     // Called once the command ends or is interrupted.
@@ -42,6 +47,7 @@ public class Autonomous extends Command {
     public void end(boolean interrupted) {
         drivetrain.tankDrive(0, 0);
         timer.stop();
+        autonomousOn = false;
     }
 
     // Returns true when the command should end.

@@ -6,7 +6,7 @@ import org.carlmontrobotics.lib199.MotorControllerFactory;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import org.carlmontrobotics.Constants.*;
-
+import org.carlmontrobotics.commands.Autonomous;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -49,15 +49,19 @@ public class Drivetrain extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    if (arcadeDrive){
-      arcadeDrive(controller.getRightX(), controller.getLeftY());
-    } 
-    else{
-      tankDrive(controller.getLeftY(), controller.getRightY());
+    if (!Autonomous.getAutonomous()){
+      if (arcadeDrive){
+        arcadeDrive(controller.getRightX(), controller.getLeftY());
+      } 
+      else{
+        tankDrive(controller.getLeftY(), controller.getRightY());
 
+      }
     }
     //leftWheels.set(SmartDashboard.getNumber("test Drive", 0));
-
+    else{
+      return;
+    }
     
   }
 }

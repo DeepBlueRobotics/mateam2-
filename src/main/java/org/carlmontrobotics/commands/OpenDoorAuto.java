@@ -4,24 +4,22 @@
 
 package org.carlmontrobotics.commands;
 
-import org.carlmontrobotics.subsystems.Drivetrain;
+import org.carlmontrobotics.subsystems.Door;
 
 import com.revrobotics.CANSparkMax;
 
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
-public class Autonomous extends Command {
+public class OpenDoorAuto extends Command {
     //make drivetrain
-    CANSparkMax rightWheels;
-    CANSparkMax leftWheels;
+    CANSparkMax doorMotor;
     Timer timer = new Timer();
-    Drivetrain drivetrain;
-    private static boolean autonomousOn;
+    Door door;
     /** Creates a new AimOuttakeSpeaker. */
-    public Autonomous(Drivetrain drivetrain) {
+    public OpenDoorAuto(Door door) {
         // Use addRequirements() here to declare subsystem dependencies.
-        addRequirements(this.drivetrain = drivetrain);
+        addRequirements(this.door = door);
+
     }
 
     // Called when the command is initially scheduled.
@@ -29,31 +27,25 @@ public class Autonomous extends Command {
     public void initialize() {
         timer.reset();
         timer.start();
-        drivetrain.tankDrive(1, 1);
-        autonomousOn = true;
+        Door.doorMotor.set(-0.1);
+
     }
 
     // Called every time the scheduler runs while the command is scheduled.
     @Override
-    public void execute() {
-
-    }
-    public static boolean getAutonomous() {
-        return autonomousOn;
-    }
+    public void execute() {}
 
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
-        drivetrain.tankDrive(0, 0);
+        Door.doorMotor.set(0);
         timer.stop();
-        autonomousOn = false;
     }
 
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        return timer.get() > 1;
+        return timer.get() > 2;
         //run for 15 more seconds and then stop
         //timer gets stopped
     }

@@ -29,7 +29,7 @@ public class Autonomous extends Command {
     public void initialize() {
         timer.reset();
         timer.start();
-        drivetrain.tankDrive(1, 1);
+        drivetrain.tankDrive(0.857, 0.857);
         autonomousOn = true;
     }
 
@@ -53,7 +53,7 @@ public class Autonomous extends Command {
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        return timer.get() > 1;
+        return timer.get() > 1.25;
         //run for 15 more seconds and then stop
         //timer gets stopped
     }

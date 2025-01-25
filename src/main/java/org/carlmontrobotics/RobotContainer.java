@@ -23,30 +23,11 @@ import edu.wpi.first.wpilibj2.command.button.POVButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 public class RobotContainer {
-  private final XboxController controller = new XboxController(OI.DRIVER_PORT);
-  private final XboxController controller2 = new XboxController(OI.CONTROLLER_PORT);
-  private final Drivetrain drivetrain = new Drivetrain(controller);
-  private final Door door = new Door();
-  public RobotContainer() {
-    setBindings();
+  private final motors door = new motors();
+
   }
 
   private void setBindings() {
-    //6 is the Right bumper
-  new JoystickButton(controller, Constants.DoorConstants.rightBumper)
-    .whileTrue(new InstantCommand(door::doorOpenButton))
-    .whileFalse(new InstantCommand(door::doorStopButton));
-
-  new JoystickButton(controller, Constants.DoorConstants.leftBumper)
-    .whileTrue(new InstantCommand(door::doorCloseButton))
-    .whileFalse(new InstantCommand(door::doorStopButton));
-
-  new JoystickButton(controller, Constants.DrivetrainC.AButton)
-    .whileTrue(new InstantCommand(drivetrain::switchModes));
-  }
-  public Command getAutonomousCommand() {
-    // return new Autonomous(drivetrain);
-    return new SequentialCommandGroup(new OpenDoorAuto(door), new Autonomous(drivetrain));
-  }
+   
 
 }
